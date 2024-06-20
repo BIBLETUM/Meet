@@ -1,4 +1,4 @@
-package ru.wb.meetings.components
+package ru.wb.meetings.presentation.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.padding

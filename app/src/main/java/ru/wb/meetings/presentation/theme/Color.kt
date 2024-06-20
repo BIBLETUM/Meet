@@ -1,4 +1,4 @@
-package ru.wb.meetings.ui.theme
+package ru.wb.meetings.presentation.theme
 
 import androidx.compose.ui.graphics.Color
 

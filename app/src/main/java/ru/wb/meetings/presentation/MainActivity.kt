@@ -1,4 +1,4 @@
-package ru.wb.meetings
+package ru.wb.meetings.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -22,24 +22,24 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import ru.wb.meetings.components.ButtonGhost
-import ru.wb.meetings.components.ButtonPrimary
-import ru.wb.meetings.components.ButtonSecondary
-import ru.wb.meetings.components.Chip
-import ru.wb.meetings.components.MeetingAvatar
-import ru.wb.meetings.components.ProfileAvatar
-import ru.wb.meetings.components.SearchBar
-import ru.wb.meetings.ui.theme.BodyText1
-import ru.wb.meetings.ui.theme.BodyText2
-import ru.wb.meetings.ui.theme.Heading1
-import ru.wb.meetings.ui.theme.Heading2
-import ru.wb.meetings.ui.theme.MeetTheme
-import ru.wb.meetings.ui.theme.Metadata1
-import ru.wb.meetings.ui.theme.Metadata2
-import ru.wb.meetings.ui.theme.Metadata3
-import ru.wb.meetings.ui.theme.NeutralColorActive
-import ru.wb.meetings.ui.theme.Subheading1
-import ru.wb.meetings.ui.theme.Subheading2
+import ru.wb.meetings.presentation.components.ButtonGhost
+import ru.wb.meetings.presentation.components.ButtonPrimary
+import ru.wb.meetings.presentation.components.ButtonSecondary
+import ru.wb.meetings.presentation.components.Chip
+import ru.wb.meetings.presentation.components.MeetingAvatar
+import ru.wb.meetings.presentation.components.ProfileAvatar
+import ru.wb.meetings.presentation.components.SearchBar
+import ru.wb.meetings.presentation.theme.BodyText1
+import ru.wb.meetings.presentation.theme.BodyText2
+import ru.wb.meetings.presentation.theme.Heading1
+import ru.wb.meetings.presentation.theme.Heading2
+import ru.wb.meetings.presentation.theme.MeetTheme
+import ru.wb.meetings.presentation.theme.Metadata1
+import ru.wb.meetings.presentation.theme.Metadata2
+import ru.wb.meetings.presentation.theme.Metadata3
+import ru.wb.meetings.presentation.theme.NeutralColorActive
+import ru.wb.meetings.presentation.theme.Subheading1
+import ru.wb.meetings.presentation.theme.Subheading2
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

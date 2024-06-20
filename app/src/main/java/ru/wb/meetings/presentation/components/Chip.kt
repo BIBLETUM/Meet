@@ -1,4 +1,4 @@
-package ru.wb.meetings.components
+package ru.wb.meetings.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -12,9 +12,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import ru.wb.meetings.ui.theme.BrandColorBackground
-import ru.wb.meetings.ui.theme.BrandColorDark
-import ru.wb.meetings.ui.theme.Metadata3
+import ru.wb.meetings.presentation.theme.BrandColorBackground
+import ru.wb.meetings.presentation.theme.BrandColorDark
+import ru.wb.meetings.presentation.theme.Metadata3
 
 @Composable
 fun Chip(

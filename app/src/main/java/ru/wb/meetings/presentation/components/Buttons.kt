@@ -1,4 +1,4 @@
-package ru.wb.meetings.components
+package ru.wb.meetings.presentation.components
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
@@ -23,12 +23,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ru.wb.meetings.ui.theme.BrandColorBackground
-import ru.wb.meetings.ui.theme.BrandColorDark
-import ru.wb.meetings.ui.theme.BrandColorDefault
-import ru.wb.meetings.ui.theme.NeutralColorLine
-import ru.wb.meetings.ui.theme.NeutralColorOffWhite
-import ru.wb.meetings.ui.theme.Subheading2
+import ru.wb.meetings.presentation.theme.BrandColorBackground
+import ru.wb.meetings.presentation.theme.BrandColorDark
+import ru.wb.meetings.presentation.theme.BrandColorDefault
+import ru.wb.meetings.presentation.theme.NeutralColorLine
+import ru.wb.meetings.presentation.theme.NeutralColorOffWhite
+import ru.wb.meetings.presentation.theme.Subheading2
 
 @Composable
 fun ButtonPrimary(
@@ -64,7 +64,7 @@ fun ButtonPrimary(
                 .clip(RoundedCornerShape(30.dp))
                 .clickable(
                     interactionSource,
-                    indication = null,
+                    indication = rememberRipple(),
                     enabled
                 ) {
                     onClick()
@@ -122,7 +122,7 @@ fun ButtonSecondary(
                 .padding(8.dp)
                 .clip(RoundedCornerShape(30.dp))
                 .border(borderStroke, RoundedCornerShape(30.dp))
-                .clickable(interactionSource, indication = null, enabled) {
+                .clickable(interactionSource, indication = rememberRipple(), enabled) {
                     onClick()
                 }
                 .background(if (isPressed || focused && enabled) NeutralColorOffWhite else Color.Transparent)
@@ -172,7 +172,7 @@ fun ButtonGhost(
             modifier = modifier
                 .padding(8.dp)
                 .clip(RoundedCornerShape(30.dp))
-                .clickable(interactionSource, indication = null, enabled) {
+                .clickable(interactionSource, indication = rememberRipple(), enabled) {
                     onClick()
                 }
                 .background(if (isPressed || focused && enabled) NeutralColorLine else Color.Transparent)

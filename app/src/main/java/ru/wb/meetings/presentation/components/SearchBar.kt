@@ -1,4 +1,4 @@
-package ru.wb.meetings.components
+package ru.wb.meetings.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -22,9 +22,9 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import ru.wb.meetings.ui.theme.BodyText1
-import ru.wb.meetings.ui.theme.NeutralColorDisabled
-import ru.wb.meetings.ui.theme.NeutralColorOffWhite
+import ru.wb.meetings.presentation.theme.BodyText1
+import ru.wb.meetings.presentation.theme.NeutralColorDisabled
+import ru.wb.meetings.presentation.theme.NeutralColorOffWhite
 
 @Composable
 fun SearchBar() {
