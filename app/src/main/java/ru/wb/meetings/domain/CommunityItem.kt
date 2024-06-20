@@ -2,7 +2,7 @@ package ru.wb.meetings.domain
 
 import ru.wb.meetings.R
 
-data class CommunityCardItem (
+data class CommunityItem (
     val id: Int,
     val communityName: String = "Disigna",
     val communitySubscribersCount: Int = 10000,

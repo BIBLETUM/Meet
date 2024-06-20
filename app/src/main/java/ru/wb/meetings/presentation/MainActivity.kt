@@ -26,7 +26,7 @@ import ru.wb.meetings.presentation.components.ButtonGhost
 import ru.wb.meetings.presentation.components.ButtonPrimary
 import ru.wb.meetings.presentation.components.ButtonSecondary
 import ru.wb.meetings.presentation.components.Chip
-import ru.wb.meetings.presentation.components.MeetingAvatar
+import ru.wb.meetings.presentation.components.Avatar
 import ru.wb.meetings.presentation.components.ProfileAvatar
 import ru.wb.meetings.presentation.components.SearchBar
 import ru.wb.meetings.presentation.theme.BodyText1
@@ -73,7 +73,7 @@ class MainActivity : ComponentActivity() {
                             modifier = Modifier.fillMaxWidth(),
                             contentAlignment = Alignment.Center
                         ) {
-                            MeetingAvatar()
+                            Avatar(Modifier)
                         }
                     }
                     item {

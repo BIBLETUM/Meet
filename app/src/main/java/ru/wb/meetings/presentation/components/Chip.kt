@@ -2,6 +2,7 @@ package ru.wb.meetings.presentation.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,11 +19,12 @@ import ru.wb.meetings.presentation.theme.Metadata3
 
 @Composable
 fun Chip(
+    modifier: Modifier = Modifier,
     text: String = "Python",
 ) {
     Box(
         contentAlignment = Alignment.Center,
-        modifier = Modifier
+        modifier = modifier
             .height(20.dp)
             .clip(shape = RoundedCornerShape(40.dp))
             .background(color = BrandColorBackground)
