@@ -64,7 +64,7 @@ fun ButtonPrimary(
                 .clip(RoundedCornerShape(30.dp))
                 .clickable(
                     interactionSource,
-                    indication = null,
+                    indication = rememberRipple(),
                     enabled
                 ) {
                     onClick()
@@ -122,7 +122,7 @@ fun ButtonSecondary(
                 .padding(8.dp)
                 .clip(RoundedCornerShape(30.dp))
                 .border(borderStroke, RoundedCornerShape(30.dp))
-                .clickable(interactionSource, indication = null, enabled) {
+                .clickable(interactionSource, indication = rememberRipple(), enabled) {
                     onClick()
                 }
                 .background(if (isPressed || focused && enabled) NeutralColorOffWhite else Color.Transparent)
@@ -172,7 +172,7 @@ fun ButtonGhost(
             modifier = modifier
                 .padding(8.dp)
                 .clip(RoundedCornerShape(30.dp))
-                .clickable(interactionSource, indication = null, enabled) {
+                .clickable(interactionSource, indication = rememberRipple(), enabled) {
                     onClick()
                 }
                 .background(if (isPressed || focused && enabled) NeutralColorLine else Color.Transparent)
