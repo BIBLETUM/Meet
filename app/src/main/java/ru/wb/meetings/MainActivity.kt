@@ -22,17 +22,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
-import ru.wb.meetings.components.ButtonPrimaryInitial
+import ru.wb.meetings.components.ButtonGhost
+import ru.wb.meetings.components.ButtonPrimary
+import ru.wb.meetings.components.ButtonSecondary
 import ru.wb.meetings.components.Chip
-import ru.wb.meetings.components.GhostFocus
-import ru.wb.meetings.components.GhostHover
-import ru.wb.meetings.components.GhostInitial
 import ru.wb.meetings.components.MeetingAvatar
 import ru.wb.meetings.components.ProfileAvatar
 import ru.wb.meetings.components.SearchBar
-import ru.wb.meetings.components.SecondaryFocus
-import ru.wb.meetings.components.SecondaryHover
-import ru.wb.meetings.components.SecondaryInitial
 import ru.wb.meetings.ui.theme.BodyText1
 import ru.wb.meetings.ui.theme.BodyText2
 import ru.wb.meetings.ui.theme.Heading1
@@ -99,27 +95,27 @@ fun CustomButtons() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
-        ButtonPrimaryInitial(onClick = {})
-        SecondaryInitial(onClick = {})
-        GhostInitial(onClick = {})
+        ButtonPrimary(onClick = {})
+        ButtonSecondary(onClick = {})
+        ButtonGhost(onClick = {})
 
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
 
-        ButtonPrimaryInitial(onClick = {}, hovered = true)
-        SecondaryHover(onClick = {})
-        GhostHover(onClick = {})
+        ButtonPrimary(onClick = {}, hovered = true)
+        ButtonSecondary(onClick = {}, hovered = true)
+        ButtonGhost(onClick = {}, hovered = true)
 
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
 
-        ButtonPrimaryInitial(onClick = {}, focused = true)
-        SecondaryFocus(onClick = {})
-        GhostFocus(onClick = {})
+        ButtonPrimary(onClick = {}, focused = true)
+        ButtonSecondary(onClick = {}, focused = true)
+        ButtonGhost(onClick = {}, focused = true)
 
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
 
-        ButtonPrimaryInitial(onClick = {}, enabled = false)
-        SecondaryInitial(onClick = {}, enabled = false)
-        GhostInitial(onClick = {}, enabled = false)
+        ButtonPrimary(onClick = {}, enabled = false)
+        ButtonSecondary(onClick = {}, enabled = false)
+        ButtonGhost(onClick = {}, enabled = false)
 
     }
 }
