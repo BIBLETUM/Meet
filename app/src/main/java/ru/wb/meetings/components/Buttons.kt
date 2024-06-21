@@ -30,6 +30,7 @@ import ru.wb.meetings.ui.theme.NeutralColorLine
 import ru.wb.meetings.ui.theme.NeutralColorOffWhite
 import ru.wb.meetings.ui.theme.Subheading2
 
+@Preview
 @Composable
 fun ButtonPrimary(
     modifier: Modifier = Modifier,
@@ -37,15 +38,10 @@ fun ButtonPrimary(
     onClick: () -> Unit = {},
     enabled: Boolean = true,
     hovered: Boolean = false,
-    focused: Boolean = false,
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
     val isHovered by interactionSource.collectIsHoveredAsState()
-    val isPressed by interactionSource.collectIsPressedAsState()
-
-    val rippleColor = if (isPressed || focused) BrandColorBackground else Color.Transparent
-
 
     val backgroundColor = if (isHovered || hovered) {
         BrandColorDark
@@ -54,36 +50,30 @@ fun ButtonPrimary(
     }
     Box(
         modifier = modifier
-            .padding(horizontal = 24.dp)
-            .clip(RoundedCornerShape(50))
-            .background(color = rippleColor)
+            .clip(RoundedCornerShape(30.dp))
+            .clickable(
+                interactionSource,
+                indication = rememberRipple(),
+                enabled
+            ) {
+                onClick()
+            }
+            .background(if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f))
+            .height(52.dp),
+        contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = modifier
-                .padding(8.dp)
-                .clip(RoundedCornerShape(30.dp))
-                .clickable(
-                    interactionSource,
-                    indication = rememberRipple(),
-                    enabled
-                ) {
-                    onClick()
-                }
-                .background(if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f))
-                .height(52.dp),
-            contentAlignment = Alignment.Center
-        ) {
 
-            Text(
-                modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
-                text = text,
-                style = MaterialTheme.typography.Subheading2,
-                color = if (enabled) NeutralColorOffWhite else NeutralColorOffWhite.copy(alpha = 0.5f)
-            )
-        }
+        Text(
+            modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
+            text = text,
+            style = MaterialTheme.typography.Subheading2,
+            color = if (enabled) NeutralColorOffWhite else NeutralColorOffWhite.copy(alpha = 0.5f)
+        )
     }
+
 }
 
+@Preview
 @Composable
 fun ButtonSecondary(
     modifier: Modifier = Modifier,
@@ -91,13 +81,9 @@ fun ButtonSecondary(
     onClick: () -> Unit = {},
     enabled: Boolean = true,
     hovered: Boolean = false,
-    focused: Boolean = false,
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isHovered by interactionSource.collectIsHoveredAsState()
-    val isPressed by interactionSource.collectIsPressedAsState()
-
-    val rippleColor = if (isPressed || focused) NeutralColorOffWhite else Color.Transparent
 
     val backgroundColor = if (isHovered || hovered) {
         BrandColorDark
@@ -110,33 +96,25 @@ fun ButtonSecondary(
     } else {
         BorderStroke(2.dp, BrandColorDefault.copy(alpha = 0.5f))
     }
-
     Box(
         modifier = modifier
-            .padding(horizontal = 24.dp)
-            .clip(RoundedCornerShape(50))
-            .background(color = if (enabled) rippleColor else Color.Transparent)
+            .clip(RoundedCornerShape(30.dp))
+            .border(borderStroke, RoundedCornerShape(30.dp))
+            .clickable(interactionSource, indication = rememberRipple(), enabled) {
+                onClick()
+            }
+            .background(Color.Transparent)
+            .height(52.dp),
+        contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = modifier
-                .padding(8.dp)
-                .clip(RoundedCornerShape(30.dp))
-                .border(borderStroke, RoundedCornerShape(30.dp))
-                .clickable(interactionSource, indication = rememberRipple(), enabled) {
-                    onClick()
-                }
-                .background(if (isPressed || focused && enabled) NeutralColorOffWhite else Color.Transparent)
-                .height(52.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
-                text = text,
-                style = MaterialTheme.typography.Subheading2,
-                color = if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f)
-            )
-        }
+        Text(
+            modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
+            text = text,
+            style = MaterialTheme.typography.Subheading2,
+            color = if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f)
+        )
     }
+
 }
 
 @Preview
@@ -147,14 +125,10 @@ fun ButtonGhost(
     onClick: () -> Unit = {},
     enabled: Boolean = true,
     hovered: Boolean = false,
-    focused: Boolean = false,
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }
     val isHovered by interactionSource.collectIsHoveredAsState()
-    val isPressed by interactionSource.collectIsPressedAsState()
-
-    val rippleColor = if (isPressed || focused) NeutralColorOffWhite else Color.Transparent
 
     val backgroundColor = if (isHovered || hovered) {
         BrandColorDark
@@ -164,27 +138,19 @@ fun ButtonGhost(
 
     Box(
         modifier = modifier
-            .padding(horizontal = 24.dp)
-            .clip(RoundedCornerShape(50))
-            .background(color = if (enabled) rippleColor else Color.Transparent)
+            .clip(RoundedCornerShape(30.dp))
+            .clickable(interactionSource, indication = rememberRipple(), enabled) {
+                onClick()
+            }
+            .background(Color.Transparent)
+            .height(52.dp),
+        contentAlignment = Alignment.Center
     ) {
-        Box(
-            modifier = modifier
-                .padding(8.dp)
-                .clip(RoundedCornerShape(30.dp))
-                .clickable(interactionSource, indication = rememberRipple(), enabled) {
-                    onClick()
-                }
-                .background(if (isPressed || focused && enabled) NeutralColorLine else Color.Transparent)
-                .height(52.dp),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
-                text = text,
-                style = MaterialTheme.typography.Subheading2,
-                color = if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f)
-            )
-        }
+        Text(
+            modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
+            text = text,
+            style = MaterialTheme.typography.Subheading2,
+            color = if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f)
+        )
     }
 }

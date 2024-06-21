@@ -107,12 +107,6 @@ fun CustomButtons() {
 
         Spacer(modifier = Modifier.padding(vertical = 10.dp))
 
-        ButtonPrimary(onClick = {}, focused = true)
-        ButtonSecondary(onClick = {}, focused = true)
-        ButtonGhost(onClick = {}, focused = true)
-
-        Spacer(modifier = Modifier.padding(vertical = 10.dp))
-
         ButtonPrimary(onClick = {}, enabled = false)
         ButtonSecondary(onClick = {}, enabled = false)
         ButtonGhost(onClick = {}, enabled = false)
