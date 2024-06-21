@@ -22,7 +22,7 @@ import java.util.Locale
 @Preview
 @Composable
 fun AvatarsList(modifier: Modifier = Modifier, users: MutableList<User> = mutableListOf()) {
-    for (i in 0..0) {
+    for (i in 0..12) {
         users.add(User())
     }
     val countListedUsers = if (users.size > 5) 5 else users.size
