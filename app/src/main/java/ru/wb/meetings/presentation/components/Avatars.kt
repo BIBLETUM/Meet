@@ -82,6 +82,7 @@ fun Avatar(modifier: Modifier, imageResId: Int = R.drawable.meeting_image_placeh
 fun UserAvatar(modifier: Modifier = Modifier, imageResId: Int = R.drawable.user_placeholder) {
     Avatar(
         modifier
-            .border(BorderStroke(2.dp, Color(0xFFD2D5F9)), RoundedCornerShape(16.dp))
+            .border(BorderStroke(2.dp, Color(0xFFD2D5F9)), RoundedCornerShape(16.dp)),
+        imageResId = imageResId
     )
 }

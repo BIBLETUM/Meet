@@ -34,7 +34,7 @@ fun AvatarsList(modifier: Modifier = Modifier, users: MutableList<User> = mutabl
         verticalAlignment = Alignment.CenterVertically
     ) {
         LazyRow(
-            horizontalArrangement = Arrangement.spacedBy((-24).dp),
+            horizontalArrangement = Arrangement.spacedBy((-15).dp),
             reverseLayout = true,
             userScrollEnabled = false
         ) {
