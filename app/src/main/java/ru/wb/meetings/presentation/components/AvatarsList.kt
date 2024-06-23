@@ -33,13 +33,13 @@ fun AvatarsList(modifier: Modifier = Modifier, users: MutableList<User> = mutabl
         verticalAlignment = Alignment.CenterVertically
     ) {
         LazyRow(
-            horizontalArrangement = Arrangement.spacedBy((-15).dp),
+            horizontalArrangement = Arrangement.spacedBy((-24).dp),
             reverseLayout = true,
             userScrollEnabled = false
         ) {
             items(countListedUsers) { index ->
                 UserAvatar(
-                    modifier = Modifier.padding(vertical = 4.dp),
+                    modifier = Modifier.padding(4.dp),
                     imageResId = users[index].profileImage
                 )
             }

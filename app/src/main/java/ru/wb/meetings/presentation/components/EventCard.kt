@@ -26,7 +26,7 @@ fun EventCard(modifier: Modifier = Modifier, eventItem: EventItem = EventItem())
         Row(
             horizontalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            Avatar(Modifier.padding(4.dp), imageResId = eventItem.meetingImage)
+            SquareMeetAvatar(Modifier.padding(4.dp), imageResId = eventItem.meetingImage)
 
             Column(modifier = Modifier.weight(1f)) {
                 Row {
