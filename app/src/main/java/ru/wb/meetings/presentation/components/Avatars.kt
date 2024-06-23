@@ -39,6 +39,12 @@ fun ProfileAvatar(
 
 @Preview
 @Composable
+fun Aboba(){
+    ProfileAvatarWithBadge(modifier = Modifier.size(200.dp))
+}
+
+@Preview
+@Composable
 fun ProfileAvatarWithBadge(
     modifier: Modifier = Modifier,
     imageResId: Int = R.drawable.profile_image_placeholder,

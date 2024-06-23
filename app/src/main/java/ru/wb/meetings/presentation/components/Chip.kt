@@ -13,9 +13,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
-import ru.wb.meetings.presentation.theme.BrandColorBackground
-import ru.wb.meetings.presentation.theme.BrandColorDark
-import ru.wb.meetings.presentation.theme.Metadata3
+import ru.wb.meetings.presentation.theme.MeetsTheme
 
 @Composable
 fun Chip(
@@ -27,12 +25,12 @@ fun Chip(
         modifier = modifier
             .height(20.dp)
             .clip(shape = RoundedCornerShape(40.dp))
-            .background(color = BrandColorBackground)
+            .background(color = MeetsTheme.colors.brandBackground)
     ) {
         Text(
             text = text,
-            color = BrandColorDark,
-            style = MaterialTheme.typography.Metadata3,
+            color = MeetsTheme.colors.brandDark,
+            style = MeetsTheme.typography.metadata3,
             modifier = Modifier
                 .padding(horizontal = 8.dp, vertical = 2.dp)
         )

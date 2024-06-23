@@ -17,11 +17,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.wb.meetings.domain.CommunityItem
-import ru.wb.meetings.presentation.theme.BodyText1
-import ru.wb.meetings.presentation.theme.Metadata1
-import ru.wb.meetings.presentation.theme.NeutralColorActive
-import ru.wb.meetings.presentation.theme.NeutralColorDisabled
-import ru.wb.meetings.presentation.theme.NeutralColorLine
+import ru.wb.meetings.presentation.theme.MeetsTheme
 import java.util.Locale
 
 @Preview
@@ -40,8 +36,8 @@ fun CommunityCard(
                 Box(modifier = Modifier.height(24.dp), contentAlignment = Alignment.Center) {
                     Text(
                         text = communityCardItem.communityName,
-                        style = MaterialTheme.typography.BodyText1,
-                        color = NeutralColorActive,
+                        style = MeetsTheme.typography.bodyText1,
+                        color = MeetsTheme.colors.neutralActive,
                     )
                 }
 
@@ -57,13 +53,13 @@ fun CommunityCard(
                             "%,d человек",
                             communityCardItem.communitySubscribersCount
                         ),
-                        style = MaterialTheme.typography.Metadata1,
-                        color = NeutralColorDisabled,
+                        style = MeetsTheme.typography.metadata1,
+                        color = MeetsTheme.colors.neutralDisabled,
                         modifier = Modifier.height(20.dp)
                     )
                 }
             }
         }
-        HorizontalDivider(modifier = Modifier.padding(top = 12.dp), color = NeutralColorLine)
+        HorizontalDivider(modifier = Modifier.padding(top = 12.dp), color = MeetsTheme.colors.neutralLine)
     }
 }

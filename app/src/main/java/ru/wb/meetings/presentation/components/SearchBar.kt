@@ -13,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.ShapeDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,11 +22,11 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ru.wb.meetings.presentation.theme.BodyText1
-import ru.wb.meetings.presentation.theme.NeutralColorDisabled
-import ru.wb.meetings.presentation.theme.NeutralColorOffWhite
+import ru.wb.meetings.presentation.theme.MeetsTheme
 
+@Preview
 @Composable
 fun SearchBar() {
     CustomTextField(
@@ -33,13 +34,13 @@ fun SearchBar() {
             Icon(
                 Icons.Filled.Search,
                 null,
-                tint = NeutralColorDisabled
+                tint = MeetsTheme.colors.neutralDisabled
             )
         },
         modifier = Modifier
             .padding(horizontal = 24.dp)
             .background(
-                NeutralColorOffWhite,
+                MeetsTheme.colors.neutralOffWhite,
                 RoundedCornerShape(4.dp)
             )
             .height(36.dp),
@@ -56,8 +57,8 @@ private fun CustomTextField(
     var text by rememberSaveable { mutableStateOf("") }
     BasicTextField(modifier = modifier
         .background(
-            NeutralColorOffWhite,
-            MaterialTheme.shapes.small,
+            MeetsTheme.colors.neutralOffWhite,
+            ShapeDefaults.Small,
         )
         .fillMaxWidth(),
         value = text,
@@ -65,7 +66,7 @@ private fun CustomTextField(
             text = it
         },
         singleLine = true,
-        textStyle = MaterialTheme.typography.BodyText1,
+        textStyle = MeetsTheme.typography.bodyText1,
         decorationBox = { innerTextField ->
             Row(
                 Modifier.padding(start = 8.dp),
@@ -76,8 +77,8 @@ private fun CustomTextField(
                 Box(Modifier.weight(1f)) {
                     if (text.isEmpty()) Text(
                         placeholderText,
-                        style = MaterialTheme.typography.BodyText1,
-                        color = NeutralColorDisabled
+                        style = MeetsTheme.typography.bodyText1,
+                        color = MeetsTheme.colors.neutralDisabled
                     )
                     innerTextField()
                 }

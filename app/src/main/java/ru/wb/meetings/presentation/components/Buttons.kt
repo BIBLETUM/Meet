@@ -22,10 +22,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import ru.wb.meetings.presentation.theme.BrandColorDark
-import ru.wb.meetings.presentation.theme.BrandColorDefault
-import ru.wb.meetings.presentation.theme.NeutralColorOffWhite
-import ru.wb.meetings.presentation.theme.Subheading2
+import ru.wb.meetings.presentation.theme.MeetsTheme
 
 @Preview
 @Composable
@@ -41,9 +38,9 @@ fun ButtonPrimary(
     val isHovered by interactionSource.collectIsHoveredAsState()
 
     val backgroundColor = if (isHovered || hovered) {
-        BrandColorDark
+        MeetsTheme.colors.brandDark
     } else {
-        BrandColorDefault
+        MeetsTheme.colors.brandDefault
     }
     Box(
         modifier = modifier
@@ -55,7 +52,7 @@ fun ButtonPrimary(
             ) {
                 onClick()
             }
-            .background(if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f))
+            .background(if (enabled) backgroundColor else MeetsTheme.colors.brandDefault.copy(alpha = 0.5f))
             .height(52.dp),
         contentAlignment = Alignment.Center
     ) {
@@ -63,8 +60,10 @@ fun ButtonPrimary(
         Text(
             modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
             text = text,
-            style = MaterialTheme.typography.Subheading2,
-            color = if (enabled) NeutralColorOffWhite else NeutralColorOffWhite.copy(alpha = 0.5f)
+            style = MeetsTheme.typography.subheading2,
+            color = if (enabled) MeetsTheme.colors.neutralOffWhite else MeetsTheme.colors.neutralOffWhite.copy(
+                alpha = 0.5f
+            )
         )
     }
 
@@ -83,15 +82,15 @@ fun ButtonSecondary(
     val isHovered by interactionSource.collectIsHoveredAsState()
 
     val backgroundColor = if (isHovered || hovered) {
-        BrandColorDark
+        MeetsTheme.colors.brandDark
     } else {
-        BrandColorDefault
+        MeetsTheme.colors.brandDefault
     }
 
     val borderStroke = if (enabled) {
         BorderStroke(2.dp, backgroundColor)
     } else {
-        BorderStroke(2.dp, BrandColorDefault.copy(alpha = 0.5f))
+        BorderStroke(2.dp, MeetsTheme.colors.brandDefault.copy(alpha = 0.5f))
     }
     Box(
         modifier = modifier
@@ -107,8 +106,8 @@ fun ButtonSecondary(
         Text(
             modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
             text = text,
-            style = MaterialTheme.typography.Subheading2,
-            color = if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f)
+            style = MeetsTheme.typography.subheading2,
+            color = if (enabled) backgroundColor else MeetsTheme.colors.brandDefault.copy(alpha = 0.5f)
         )
     }
 
@@ -128,9 +127,9 @@ fun ButtonGhost(
     val isHovered by interactionSource.collectIsHoveredAsState()
 
     val backgroundColor = if (isHovered || hovered) {
-        BrandColorDark
+        MeetsTheme.colors.brandDark
     } else {
-        BrandColorDefault
+        MeetsTheme.colors.brandDefault
     }
 
     Box(
@@ -146,8 +145,8 @@ fun ButtonGhost(
         Text(
             modifier = Modifier.padding(horizontal = 48.dp, vertical = 12.dp),
             text = text,
-            style = MaterialTheme.typography.Subheading2,
-            color = if (enabled) backgroundColor else BrandColorDefault.copy(alpha = 0.5f)
+            style = MeetsTheme.typography.subheading2,
+            color = if (enabled) backgroundColor else MeetsTheme.colors.brandDefault.copy(alpha = 0.5f)
         )
 
     }

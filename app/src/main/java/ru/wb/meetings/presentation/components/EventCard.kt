@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -17,12 +16,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.wb.meetings.domain.EventItem
-import ru.wb.meetings.presentation.theme.BodyText1
-import ru.wb.meetings.presentation.theme.Metadata1
-import ru.wb.meetings.presentation.theme.NeutralColorActive
-import ru.wb.meetings.presentation.theme.NeutralColorDisabled
-import ru.wb.meetings.presentation.theme.NeutralColorLine
-import ru.wb.meetings.presentation.theme.NeutralColorWeak
+import ru.wb.meetings.presentation.theme.MeetsTheme
 import java.util.Locale
 
 @Preview
@@ -44,14 +38,14 @@ fun EventCard(modifier: Modifier = Modifier, eventItem: EventItem = EventItem())
                     ) {
                         Text(
                             text = eventItem.meetingName,
-                            style = MaterialTheme.typography.BodyText1,
-                            color = NeutralColorActive,
+                            style = MeetsTheme.typography.bodyText1,
+                            color = MeetsTheme.colors.neutralActive,
                         )
                     }
                     Text(
                         text = eventItem.status,
-                        style = MaterialTheme.typography.Metadata1,
-                        color = NeutralColorWeak
+                        style = MeetsTheme.typography.metadata1,
+                        color = MeetsTheme.colors.neutralWeak
                     )
                 }
 
@@ -68,8 +62,8 @@ fun EventCard(modifier: Modifier = Modifier, eventItem: EventItem = EventItem())
                             "%s — %s",
                             eventItem.date, eventItem.city
                         ),
-                        style = MaterialTheme.typography.Metadata1,
-                        color = NeutralColorDisabled,
+                        style = MeetsTheme.typography.metadata1,
+                        color = MeetsTheme.colors.neutralDisabled,
                         modifier = Modifier.height(20.dp)
                     )
                 }
@@ -85,6 +79,9 @@ fun EventCard(modifier: Modifier = Modifier, eventItem: EventItem = EventItem())
                 }
             }
         }
-        HorizontalDivider(modifier = Modifier.padding(top = 12.dp), color = NeutralColorLine)
+        HorizontalDivider(
+            modifier = Modifier.padding(top = 12.dp),
+            color = MeetsTheme.colors.neutralLine
+        )
     }
 }

@@ -1,17 +1,39 @@
 package ru.wb.meetings.presentation.theme
 
+import androidx.compose.runtime.Immutable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 
-val BrandColorDark = Color(0xFF660EC8)
-val BrandColorDefault = Color(0xFF9A41FE)
-val BrandColorDarkMode = Color(0xFF8207E8)
-val BrandColorBackground = Color(0xFFF5ECFF)
+@Immutable
+data class MeetsColorScheme(
+    val brandDark: Color,
+    val brandDefault: Color,
+    val brandLight: Color,
+    val brandBackground: Color,
+    val neutralActive: Color,
+    val neutralBody: Color,
+    val neutralWeak: Color,
+    val neutralDisabled: Color,
+    val neutralWhite: Color,
+    val neutralLine: Color,
+    val neutralOffWhite: Color,
+)
 
-val NeutralColorActive = Color(0xFF29183B)
-val NeutralColorDark = Color(0xFF190E26)
-val NeutralColorBody = Color(0xFF1D0835)
-val NeutralColorWeak = Color(0xFFA4A4A4)
-val NeutralColorDisabled = Color(0xFFADB5BD)
-val NeutralColorLine = Color(0xFFEDEDED)
-val NeutralColorOffWhite = Color(0xFFF7F7FC)
-val NeutralColorWhite = Color(0xFFFFFFFF)
+
+val LightColorScheme = MeetsColorScheme(
+    brandDefault = Color(0xFF9A41FE),
+    brandDark = Color(0xFF660EC8),
+    brandBackground = Color(0xFFF5ECFF),
+    brandLight = Color(0xFF9A41FE),
+    neutralActive = Color(0xFF29183B),
+    neutralBody = Color(0xFF1D0835),
+    neutralWeak = Color(0xFFA4A4A4),
+    neutralDisabled = Color(0xFFD4DBE7),
+    neutralLine = Color(0xFFEDEDED),
+    neutralWhite = Color(0xFFFFFFFF),
+    neutralOffWhite = Color(0xFFF7F7FC),
+)
+
+val LocalColorScheme = staticCompositionLocalOf {
+    LightColorScheme
+}

@@ -15,8 +15,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import ru.wb.meetings.domain.User
-import ru.wb.meetings.presentation.theme.BodyText1
-import ru.wb.meetings.presentation.theme.NeutralColorActive
+import ru.wb.meetings.presentation.theme.MeetsTheme
 import java.util.Locale
 
 @Preview
@@ -52,8 +51,8 @@ fun AvatarsList(modifier: Modifier = Modifier, users: MutableList<User> = mutabl
                     Locale.US,
                     "+%s",
                     leftUsers.toString()
-                ), style = MaterialTheme.typography.BodyText1,
-                color = NeutralColorActive
+                ), style = MeetsTheme.typography.bodyText1,
+                color = MeetsTheme.colors.neutralActive
             )
         }
     }
