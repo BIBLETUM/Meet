@@ -22,28 +22,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MeetsTheme {
-                LazyColumn(
-                    modifier = Modifier.background(color = Color.White),
-                    verticalArrangement = Arrangement.spacedBy(20.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    item {
-                        EventCard()
-                    }
-                    item {
-                        AvatarsList()
-                    }
-                    item {
-                        CommunityCard()
 
-                    }
-                    item {
-                        ProfileAvatar()
-                    }
-                    item {
-                        ProfileAvatarWithBadge()
-                    }
-                }
             }
         }
     }

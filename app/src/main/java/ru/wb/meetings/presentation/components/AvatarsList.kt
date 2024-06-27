@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.zIndex
 import ru.wb.meetings.domain.User
 import ru.wb.meetings.presentation.theme.MeetsTheme
 import java.util.Locale
@@ -34,12 +35,11 @@ fun AvatarsList(modifier: Modifier = Modifier, users: MutableList<User> = mutabl
     ) {
         LazyRow(
             horizontalArrangement = Arrangement.spacedBy((-24).dp),
-            reverseLayout = true,
             userScrollEnabled = false
         ) {
             items(countListedUsers) { index ->
                 UserAvatar(
-                    modifier = Modifier.padding(4.dp),
+                    modifier = Modifier.padding(4.dp).zIndex(-index.toFloat()),
                     imageResId = users[index].profileImage
                 )
             }
