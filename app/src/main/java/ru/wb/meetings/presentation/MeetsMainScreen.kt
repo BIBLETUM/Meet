@@ -30,6 +30,7 @@ import androidx.navigation.compose.rememberNavController
 import ru.wb.meetings.R
 import ru.wb.meetings.presentation.navigation.MeetsNavGraph
 import ru.wb.meetings.presentation.navigation.NavigationItem
+import ru.wb.meetings.presentation.screen.AllMeetsScreen
 import ru.wb.meetings.presentation.screen.ProfileScreen
 import ru.wb.meetings.presentation.theme.MeetsTheme
 
@@ -63,7 +64,7 @@ fun MeetsMainScreen() {
             navHostController = navHostController,
             profileScreenContent = { ProfileScreen(paddingValues) },
             myMeetsScreenContent = { /*TODO*/ },
-            allMeetsScreenContent = { /*TODO*/ },
+            allMeetsScreenContent = { AllMeetsScreen(paddingValues) },
             moreScreenContent = { /*TODO*/ }) {
 
         }
