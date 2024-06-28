@@ -1,7 +1,6 @@
 package ru.wb.meetings.presentation.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHost
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -13,6 +12,7 @@ fun MeetsNavGraph(
     myMeetsScreenContent: @Composable () -> Unit,
     allMeetsScreenContent: @Composable () -> Unit,
     moreScreenContent: @Composable () -> Unit,
+    communitiesScreenContent: @Composable () -> Unit,
 ) {
     NavHost(
         navController = navHostController,
@@ -24,11 +24,14 @@ fun MeetsNavGraph(
         composable(Screen.MyMeets.route) {
             myMeetsScreenContent()
         }
-        composable(Screen.AllMeets.route) {
+        composable(Screen.Meets.route) {
             allMeetsScreenContent()
         }
         composable(Screen.More.route) {
             moreScreenContent()
+        }
+        composable(Screen.Communities.route) {
+            communitiesScreenContent()
         }
     }
 }

@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -27,14 +26,18 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import ru.wb.meetings.R
+import ru.wb.meetings.presentation.navigation.MeetsNavGraph
 import ru.wb.meetings.presentation.navigation.NavigationItem
+import ru.wb.meetings.presentation.screen.ProfileScreen
 import ru.wb.meetings.presentation.theme.MeetsTheme
 
 @Preview
 @Composable
 fun MeetsMainScreen() {
     var selectedItemIndex by rememberSaveable { mutableStateOf(0) }
+    val navHostController = rememberNavController()
     Scaffold(
         modifier = Modifier.background(color = MeetsTheme.colors.neutralWhite),
         bottomBar = {
@@ -56,7 +59,14 @@ fun MeetsMainScreen() {
             }
         }
     ) { paddingValues ->
-        paddingValues
+        MeetsNavGraph(
+            navHostController = navHostController,
+            profileScreenContent = { ProfileScreen(paddingValues) },
+            myMeetsScreenContent = { /*TODO*/ },
+            allMeetsScreenContent = { /*TODO*/ },
+            moreScreenContent = { /*TODO*/ }) {
+
+        }
     }
 }
 
@@ -67,7 +77,7 @@ private fun BottomNavigationBar(
 ) {
     Box(
         modifier = modifier
-            .shadow(8.dp)
+            .shadow(20.dp)
             .fillMaxWidth()
             .height(64.dp)
             .background(MeetsTheme.colors.neutralWhite),

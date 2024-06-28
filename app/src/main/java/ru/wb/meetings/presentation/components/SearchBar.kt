@@ -28,7 +28,7 @@ import ru.wb.meetings.presentation.theme.MeetsTheme
 
 @Preview
 @Composable
-fun SearchBar() {
+fun SearchBar(modifier: Modifier = Modifier) {
     CustomTextField(
         leadingIcon = {
             Icon(
@@ -37,8 +37,7 @@ fun SearchBar() {
                 tint = MeetsTheme.colors.neutralDisabled
             )
         },
-        modifier = Modifier
-            .padding(horizontal = 24.dp)
+        modifier = modifier
             .background(
                 MeetsTheme.colors.neutralOffWhite,
                 RoundedCornerShape(4.dp)
