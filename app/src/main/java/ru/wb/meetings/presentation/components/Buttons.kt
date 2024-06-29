@@ -39,9 +39,9 @@ import ru.wb.meetings.presentation.theme.MeetsTheme
 fun ButtonPrimary(
     modifier: Modifier = Modifier,
     text: String = "Button",
-    onClick: () -> Unit = {},
     enabled: Boolean = true,
     hovered: Boolean = false,
+    onClick: () -> Unit = {},
 ) {
 
     val interactionSource = remember { MutableInteractionSource() }

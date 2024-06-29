@@ -30,7 +30,11 @@ import androidx.navigation.compose.rememberNavController
 import ru.wb.meetings.R
 import ru.wb.meetings.presentation.navigation.MeetsNavGraph
 import ru.wb.meetings.presentation.navigation.NavigationItem
+import ru.wb.meetings.presentation.navigation.Screen
 import ru.wb.meetings.presentation.screen.AllMeetsScreen
+import ru.wb.meetings.presentation.screen.CommunitiesScreen
+import ru.wb.meetings.presentation.screen.MoreScreen
+import ru.wb.meetings.presentation.screen.MyMeetsScreen
 import ru.wb.meetings.presentation.screen.ProfileScreen
 import ru.wb.meetings.presentation.theme.MeetsTheme
 
@@ -52,10 +56,15 @@ fun MeetsMainScreen() {
                     BottomNavigationBarItem(
                         labelResId = navigationItem.titleOnSelectedResId,
                         selected = selectedItemIndex == index,
-                        onClick = { selectedItemIndex = index },
                         iconResId = navigationItem.iconResId,
                         index = index
-                    )
+                    ) {
+                        selectedItemIndex = index
+                        navHostController.navigate(navigationItem.screen.route) {
+                            popUpTo(Screen.Meets.route)
+                            launchSingleTop = true
+                        }
+                    }
                 }
             }
         }
@@ -63,11 +72,20 @@ fun MeetsMainScreen() {
         MeetsNavGraph(
             navHostController = navHostController,
             profileScreenContent = { ProfileScreen(paddingValues) },
-            myMeetsScreenContent = { /*TODO*/ },
+            myMeetsScreenContent = { MyMeetsScreen(paddingValues) },
             allMeetsScreenContent = { AllMeetsScreen(paddingValues) },
-            moreScreenContent = { /*TODO*/ }) {
-
-        }
+            moreScreenContent = {
+                MoreScreen(
+                    paddingValues,
+                    navigateToMyMeets = {
+                        navHostController.navigate(Screen.MyMeets.route)
+                    },
+                    navigateToProfile = {
+                        navHostController.navigate(Screen.Profile.route)
+                    }
+                )
+            },
+            communitiesScreenContent = { CommunitiesScreen() })
     }
 }
 
@@ -102,9 +120,9 @@ private fun RowScope.BottomNavigationBarItem(
     modifier: Modifier = Modifier,
     selected: Boolean = true,
     labelResId: Int = R.string.navigation_item_meets,
-    onClick: () -> Unit = {},
     iconResId: Int = R.drawable.cofee_icon,
     index: Int = 0,
+    onClick: () -> Unit = {},
 ) {
     val contentAlignment: Alignment = when (index) {
         0 -> Alignment.CenterStart

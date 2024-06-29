@@ -43,13 +43,13 @@ fun AllMeetsScreen(paddingValues: PaddingValues = PaddingValues(0.dp)) {
     val activeMeetsText = "АКТИВНЫЕ"
     Column(
         modifier = Modifier
+            .background(color = MeetsTheme.colors.neutralWhite)
+            .padding(top = 16.dp)
             .padding(paddingValues)
-            .fillMaxSize()
-            .background(color = MeetsTheme.colors.neutralWhite),
+            .fillMaxSize(),
         verticalArrangement = Arrangement.spacedBy(16.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.padding(top = 16.dp))
         SearchBar(modifier = Modifier.padding(horizontal = 24.dp))
 
         Row(
