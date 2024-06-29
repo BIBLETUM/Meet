@@ -16,7 +16,7 @@ fun MeetsNavGraph(
 ) {
     NavHost(
         navController = navHostController,
-        startDestination = Screen.Profile.route
+        startDestination = Screen.Meets.route
     ) {
         composable(Screen.Profile.route) {
             profileScreenContent()
