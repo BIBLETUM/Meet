@@ -8,15 +8,14 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.RowScope
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
+import androidx.compose.material.ripple.rememberRipple
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,23 +23,56 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import ru.wb.meetings.R
 import ru.wb.meetings.domain.EventItem
+import ru.wb.meetings.presentation.AppBarState
 import ru.wb.meetings.presentation.components.EventCard
 import ru.wb.meetings.presentation.components.SearchBar
 import ru.wb.meetings.presentation.components.SegmentButton
 import ru.wb.meetings.presentation.theme.MeetsTheme
 
-@Preview
+
 @Composable
-fun AllMeetsScreen(paddingValues: PaddingValues = PaddingValues(0.dp)) {
+fun AllMeetsScreen(
+    paddingValues: PaddingValues = PaddingValues(0.dp),
+    onComposing: (AppBarState) -> Unit,
+    navigateToAddMeet: () -> Unit,
+) {
     val allMeetsText = "ВСЕ ВСТРЕЧИ"
     val activeMeetsText = "АКТИВНЫЕ"
+
+    onComposing(AppBarState(
+        title = "Встречи",
+        navigationIcon = null,
+        actions = {
+            val interactionSource = remember {
+                MutableInteractionSource()
+            }
+            Box(
+                modifier = Modifier
+                    .padding(start = 8.dp)
+                    .size(24.dp)
+                    .clickable(
+                        interactionSource = interactionSource,
+                        indication = rememberRipple()
+                    ) {
+                        navigateToAddMeet()
+                    },
+                contentAlignment = Alignment.Center
+            ) {
+                Icon(
+                    modifier = Modifier
+                        .size(14.dp),
+                    painter = painterResource(id = R.drawable.add_plus_icon),
+                    contentDescription = "Добавить встречу",
+                    tint = MeetsTheme.colors.neutralActive
+                )
+            }
+        }
+    ))
+
     Column(
         modifier = Modifier
             .background(color = MeetsTheme.colors.neutralWhite)

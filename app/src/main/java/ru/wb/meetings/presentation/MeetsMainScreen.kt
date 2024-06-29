@@ -16,7 +16,9 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
@@ -41,10 +43,14 @@ import ru.wb.meetings.presentation.theme.MeetsTheme
 @Preview
 @Composable
 fun MeetsMainScreen() {
-    var selectedItemIndex by rememberSaveable { mutableStateOf(0) }
+    var selectedItemIndex by rememberSaveable { mutableIntStateOf(0) }
     val navHostController = rememberNavController()
+    var appBarState by remember {
+        mutableStateOf(AppBarState())
+    }
     Scaffold(
         modifier = Modifier.background(color = MeetsTheme.colors.neutralWhite),
+        topBar = { MeetsTopAppBar(appBarState = appBarState) },
         bottomBar = {
             BottomNavigationBar {
                 val navigationItems = listOf(
@@ -71,12 +77,39 @@ fun MeetsMainScreen() {
     ) { paddingValues ->
         MeetsNavGraph(
             navHostController = navHostController,
-            profileScreenContent = { ProfileScreen(paddingValues) },
-            myMeetsScreenContent = { MyMeetsScreen(paddingValues) },
-            allMeetsScreenContent = { AllMeetsScreen(paddingValues) },
+            profileScreenContent = {
+                ProfileScreen(
+                    paddingValues = paddingValues,
+                    onComposing = {
+                        appBarState = it
+                    },
+                    navigateBack = { navHostController.popBackStack() },
+                    navigateToEditProfile = {})
+            },
+            myMeetsScreenContent = {
+                MyMeetsScreen(
+                    paddingValues = paddingValues,
+                    onComposing = {
+                        appBarState = it
+                    },
+                    navigateBack = { navHostController.popBackStack() }
+                )
+            },
+            allMeetsScreenContent = {
+                AllMeetsScreen(
+                    paddingValues = paddingValues,
+                    onComposing = {
+                        appBarState = it
+                    },
+                    navigateToAddMeet = {}
+                )
+            },
             moreScreenContent = {
                 MoreScreen(
-                    paddingValues,
+                    paddingValues = paddingValues,
+                    onComposing = {
+                        appBarState = it
+                    },
                     navigateToMyMeets = {
                         navHostController.navigate(Screen.MyMeets.route)
                     },
@@ -85,8 +118,51 @@ fun MeetsMainScreen() {
                     }
                 )
             },
-            communitiesScreenContent = { CommunitiesScreen() })
+            communitiesScreenContent = {
+                CommunitiesScreen(
+                    onComposing = {
+                        appBarState = it
+                    },
+                )
+            })
     }
+}
+
+data class AppBarState(
+    val title: String = "",
+    val navigationIcon: (@Composable RowScope.() -> Unit)? = null,
+    val actions: (@Composable RowScope.() -> Unit)? = null
+)
+
+@Composable
+private fun MeetsTopAppBar(
+    modifier: Modifier = Modifier,
+    appBarState: AppBarState,
+) {
+    Box(
+        modifier = modifier
+            .background(MeetsTheme.colors.neutralWhite)
+            .fillMaxWidth()
+    ) {
+        val horizontalPadding = if (appBarState.navigationIcon == null) 24.dp else 16.dp
+        Row(
+            modifier = modifier
+                .padding(vertical = 14.dp, horizontal = horizontalPadding)
+                .fillMaxWidth()
+                .height(30.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            appBarState.navigationIcon?.invoke(this)
+            Text(
+                modifier = modifier.weight(1f),
+                text = appBarState.title,
+                style = MeetsTheme.typography.subheading1,
+                color = MeetsTheme.colors.neutralActive
+            )
+            appBarState.actions?.invoke(this)
+        }
+    }
+
 }
 
 @Composable
